@@ -358,4 +358,8 @@ register int    l;
 }
 #endif
 
+// Capture the current 64-bit cycle count.
+uint64_t get_cycle_count() {
+  return read_csr(0xb80); // mcycle
+}
 
