@@ -32,7 +32,7 @@ char            Ch_1_Glob,
 int             Arr_1_Glob [50];
 int             Arr_2_Glob [50] [50];
 
-extern char     *malloc ();
+extern void     *malloc ();
 Enumeration     Func_1 ();
   /* forward declaration necessary since Enumeration may not simply be int */
 
@@ -73,8 +73,7 @@ float           Microseconds,
 
 /* end of variables for time measurement */
 
-
-main ()
+int main ()
 /*****/
 
   /* main program, corresponds to procedures        */
@@ -139,17 +138,7 @@ main ()
   /***************/
   /* Start timer */
   /***************/
- 
-#ifdef TIMES
-  times (&time_info);
-  Begin_Time = (long) time_info.tms_utime;
-#endif
-#ifdef TIME
-  Begin_Time = time ( (long *) 0);
-#endif
-#ifdef MSC_CLOCK
-  Begin_Time = clock();
-#endif
+  Begin_Time = get_cycle_count();
 
   for (Run_Index = 1; Run_Index <= Number_Of_Runs; ++Run_Index)
   {
@@ -201,16 +190,7 @@ main ()
   /* Stop timer */
   /**************/
   
-#ifdef TIMES
-  times (&time_info);
-  End_Time = (long) time_info.tms_utime;
-#endif
-#ifdef TIME
-  End_Time = time ( (long *) 0);
-#endif
-#ifdef MSC_CLOCK
-  End_Time = clock();
-#endif
+  End_Time = get_cycle_count();
 
   printf ("Execution ends\n");
   printf ("\n");
@@ -267,37 +247,13 @@ main ()
 
   User_Time = End_Time - Begin_Time;
 
-  if (User_Time < Too_Small_Time)
-  {
-    printf ("Measured time too small to obtain meaningful results\n");
-    printf ("Please increase number of runs\n");
-    printf ("\n");
-  }
-  else
-  {
-#ifdef TIME
-    Microseconds = (float) User_Time * Mic_secs_Per_Second 
-                        / (float) Number_Of_Runs;
-    Dhrystones_Per_Second = (float) Number_Of_Runs / (float) User_Time;
-#else
-    Microseconds = (float) User_Time * Mic_secs_Per_Second 
-                        / ((float) HZ * ((float) Number_Of_Runs));
-    Dhrystones_Per_Second = ((float) HZ * (float) Number_Of_Runs)
-                        / (float) User_Time;
-#endif
-    printf ("Microseconds for one run through Dhrystone: ");
-    //printf ("%6.1f \n", Microseconds);
-    printf ("%d \n", (int)Microseconds);
-    printf ("Dhrystones per Second:                      ");
-    //printf ("%6.1f \n", Dhrystones_Per_Second);
-    printf ("%d \n", (int)Dhrystones_Per_Second);
-    printf ("\n");
-  }
-  
+  char number[32];
+  itoa(User_Time, number, 10);
+  puts(number);
+  return(User_Time);
 }
 
-
-Proc_1 (Ptr_Val_Par)
+void Proc_1 (Ptr_Val_Par)
 /******************/
 
 REG Rec_Pointer Ptr_Val_Par;
@@ -331,7 +287,7 @@ REG Rec_Pointer Ptr_Val_Par;
 } /* Proc_1 */
 
 
-Proc_2 (Int_Par_Ref)
+void Proc_2 (Int_Par_Ref)
 /******************/
     /* executed once */
     /* *Int_Par_Ref == 1, becomes 4 */
@@ -354,7 +310,7 @@ One_Fifty   *Int_Par_Ref;
 } /* Proc_2 */
 
 
-Proc_3 (Ptr_Ref_Par)
+void Proc_3 (Ptr_Ref_Par)
 /******************/
     /* executed once */
     /* Ptr_Ref_Par becomes Ptr_Glob */
@@ -369,7 +325,7 @@ Rec_Pointer *Ptr_Ref_Par;
 } /* Proc_3 */
 
 
-Proc_4 () /* without parameters */
+void Proc_4 () /* without parameters */
 /*******/
     /* executed once */
 {
@@ -381,7 +337,7 @@ Proc_4 () /* without parameters */
 } /* Proc_4 */
 
 
-Proc_5 () /* without parameters */
+void Proc_5 () /* without parameters */
 /*******/
     /* executed once */
 {
