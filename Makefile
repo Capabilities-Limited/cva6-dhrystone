@@ -33,6 +33,7 @@ endif
 
 # 25 MHz clock
 CLOCKS_PER_SEC := 25000000
+RUNS := 1000
 
 # Define sources and compilation outputs.
 COMMON_DIR := ../Toooba-mibench2
@@ -56,6 +57,9 @@ CFLAGS := \
 	-DHAS_FLOAT=1 \
 	-DRUNS=$(RUNS) \
 	-O3 \
+	-flto \
+	-funroll-loops \
+	-fstrict-aliasing \
 	-Wall \
 	-static \
 	-std=gnu99 \

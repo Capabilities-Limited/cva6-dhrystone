@@ -71,6 +71,13 @@ long            Begin_Time,
 float           Microseconds,
                 Dhrystones_Per_Second;
 
+long get_cycle_count(void)
+{
+    unsigned long cycles;
+    __asm__ volatile ("rdcycle %0" : "=r" (cycles));
+    return (long)cycles;
+}
+
 /* end of variables for time measurement */
 
 int main ()
