@@ -58,15 +58,10 @@ CFLAGS := \
 	-DDHRY_ITERS=$(DHRY_ITERS) \
 	-O3 \
 	-flto \
-	-funroll-loops \
-	-fstrict-aliasing \
 	-Wall \
 	-static \
-	-std=gnu99 \
-	-ffast-math \
 	-fno-common \
 	-fno-builtin \
-	-fno-pic \
 	-I$(COMMON_DIR)
 ASFLAGS := $(CFLAGS)
 LDFLAGS := \
