@@ -33,7 +33,7 @@ endif
 
 # 25 MHz clock
 CLOCKS_PER_SEC := 25000000
-RUNS := 1000
+DHRY_ITERS := 2000
 
 # Define sources and compilation outputs.
 COMMON_DIR := ../Toooba-mibench2
@@ -55,7 +55,7 @@ CFLAGS := \
 	-DBARE_METAL \
 	-DCLOCKS_PER_SEC=$(CLOCKS_PER_SEC) \
 	-DHAS_FLOAT=1 \
-	-DRUNS=$(RUNS) \
+	-DDHRY_ITERS=$(DHRY_ITERS) \
 	-O3 \
 	-flto \
 	-funroll-loops \

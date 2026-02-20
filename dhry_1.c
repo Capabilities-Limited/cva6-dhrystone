@@ -198,59 +198,111 @@ int main ()
   /**************/
   
   End_Time = get_cycle_count();
-
+/*
   printf ("Execution ends\n");
   printf ("\n");
   printf ("Final values of the variables used in the benchmark:\n");
   printf ("\n");
   printf ("Int_Glob:            %d\n", Int_Glob);
   printf ("        should be:   %d\n", 5);
+*/
+  if (Int_Glob != 5) return(-1);
+/*
   printf ("Bool_Glob:           %d\n", Bool_Glob);
   printf ("        should be:   %d\n", 1);
+*/
+  if (Bool_Glob != 1) return(-1);
+/*
   printf ("Ch_1_Glob:           %c\n", Ch_1_Glob);
   printf ("        should be:   %c\n", 'A');
+*/
+  if (Ch_1_Glob != 'A') return(-1);
+/*
   printf ("Ch_2_Glob:           %c\n", Ch_2_Glob);
   printf ("        should be:   %c\n", 'B');
+*/
+  if (Ch_2_Glob != 'B') return(-1);
+/*
   printf ("Arr_1_Glob[8]:       %d\n", Arr_1_Glob[8]);
   printf ("        should be:   %d\n", 7);
+*/
+  if (Arr_1_Glob[8] != 7) return(-1);
+/*
   printf ("Arr_2_Glob[8][7]:    %d\n", Arr_2_Glob[8][7]);
   printf ("        should be:   Number_Of_Runs + 10\n");
+*/
+  if (Arr_2_Glob[8][7] != Number_Of_Runs + 10) return(-1);
+/*
   printf ("Ptr_Glob->\n");
   printf ("  Ptr_Comp:          %d\n", (int) Ptr_Glob->Ptr_Comp);
   printf ("        should be:   (implementation-dependent)\n");
   printf ("  Discr:             %d\n", Ptr_Glob->Discr);
   printf ("        should be:   %d\n", 0);
+*/
+  if (Ptr_Glob->Discr != 0) return(-1);
+/*
   printf ("  Enum_Comp:         %d\n", Ptr_Glob->variant.var_1.Enum_Comp);
   printf ("        should be:   %d\n", 2);
+*/
+  if (Ptr_Glob->variant.var_1.Enum_Comp != 2) return(-1);
+/*
   printf ("  Int_Comp:          %d\n", Ptr_Glob->variant.var_1.Int_Comp);
   printf ("        should be:   %d\n", 17);
+*/
+  if (Ptr_Glob->variant.var_1.Int_Comp != 17) return(-1);
+/*
   printf ("  Str_Comp:          %s\n", Ptr_Glob->variant.var_1.Str_Comp);
   printf ("        should be:   DHRYSTONE PROGRAM, SOME STRING\n");
+*/
+  if (Ptr_Glob->Discr != 0) return(-1);
+/*
   printf ("Next_Ptr_Glob->\n");
   printf ("  Ptr_Comp:          %d\n", (int) Next_Ptr_Glob->Ptr_Comp);
   printf ("        should be:   (implementation-dependent), same as above\n");
   printf ("  Discr:             %d\n", Next_Ptr_Glob->Discr);
   printf ("        should be:   %d\n", 0);
+*/
+  if (Next_Ptr_Glob->Discr != 0) return(-1);
+/*
   printf ("  Enum_Comp:         %d\n", Next_Ptr_Glob->variant.var_1.Enum_Comp);
   printf ("        should be:   %d\n", 1);
+*/
+  if (Next_Ptr_Glob->variant.var_1.Enum_Comp != 1) return(-1);
+/*
   printf ("  Int_Comp:          %d\n", Next_Ptr_Glob->variant.var_1.Int_Comp);
   printf ("        should be:   %d\n", 18);
+*/
+  if (Next_Ptr_Glob->variant.var_1.Int_Comp != 18) return(-1);
+/*
   printf ("  Str_Comp:          %s\n",
                                 Next_Ptr_Glob->variant.var_1.Str_Comp);
   printf ("        should be:   DHRYSTONE PROGRAM, SOME STRING\n");
   printf ("Int_1_Loc:           %d\n", Int_1_Loc);
   printf ("        should be:   %d\n", 5);
+*/
+  if (Int_1_Loc != 5) return(-1);
+/*
   printf ("Int_2_Loc:           %d\n", Int_2_Loc);
   printf ("        should be:   %d\n", 13);
+*/
+  if (Int_2_Loc != 13) return(-1);
+/*
   printf ("Int_3_Loc:           %d\n", Int_3_Loc);
   printf ("        should be:   %d\n", 7);
+*/
+  if (Int_3_Loc != 7) return(-1);
+/*
   printf ("Enum_Loc:            %d\n", Enum_Loc);
   printf ("        should be:   %d\n", 1);
+*/
+  if (Enum_Loc != 1) return(-1);
+/*
   printf ("Str_1_Loc:           %s\n", Str_1_Loc);
   printf ("        should be:   DHRYSTONE PROGRAM, 1'ST STRING\n");
   printf ("Str_2_Loc:           %s\n", Str_2_Loc);
   printf ("        should be:   DHRYSTONE PROGRAM, 2'ND STRING\n");
   printf ("\n");
+*/
 
   User_Time = End_Time - Begin_Time;
 
